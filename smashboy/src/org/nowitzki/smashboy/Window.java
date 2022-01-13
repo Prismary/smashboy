@@ -59,7 +59,6 @@ public class Window extends JFrame {
 					moveLeftPressed = true;
 					// Move left
 					board.piece.move(Direction.Left);
-					System.out.println("moved left");
 				}
 				break;
 			case "D":
@@ -67,15 +66,13 @@ public class Window extends JFrame {
 					moveRightPressed = true;
 					// Move right
 					board.piece.move(Direction.Right);
-					System.out.println("moved right");
 				}
 				break;
 			case "S":
 				if (!acceleratePressed) {
 					acceleratePressed = true;
-					// Accelerate drop (NOT FINAL!!)
-					board.piece.move(Direction.Down);
-					System.out.println("accelerated");
+					// Accelerate drop
+					Game.instance.enableAcceleration();
 				}
 				break;
 			case "J":
@@ -83,7 +80,6 @@ public class Window extends JFrame {
 					rotateLeftPressed = true;
 					// Rotate left
 					board.piece.rotate(Direction.Left);
-					System.out.println("rotated counter-clockwise");
 				}
 				break;
 			case "K":
@@ -91,7 +87,6 @@ public class Window extends JFrame {
 					rotateRightPressed = true;
 					// Rotate right
 					board.piece.rotate(Direction.Right);
-					System.out.println("rotated clockwise");
 				}
 				break;
 			case "Space":
@@ -99,14 +94,10 @@ public class Window extends JFrame {
 					hardDropPressed = true;
 					// Hard drop
 					board.piece.hardDrop();
-					System.out.println("hard dropped");
 				}
 				break;
 			case "L":
 				Game.instance.increaseLevel();
-				break;
-			case "W":
-				board.piece.move(Direction.Up);
 				break;
 			}
 				
@@ -123,6 +114,7 @@ public class Window extends JFrame {
 				break;
 			case "S":
 				acceleratePressed = false;
+				Game.instance.disableAcceleration();
 				break;
 			case "J":
 				rotateLeftPressed = false;

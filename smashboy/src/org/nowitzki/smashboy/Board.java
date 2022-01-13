@@ -35,10 +35,6 @@ public class Board extends JComponent {
 		board = new BlockType[boardDims.X][boardDims.Y];
 		
 		setColorTable();
-		
-		
-		// Test
-		spawnPiece();
 	}
 	
 	public void spawnPiece() {
@@ -177,6 +173,13 @@ public class Board extends JComponent {
 			        break;
 				}
 			}
+		}
+		
+		// Draw current piece
+		
+		// Return if piece is null
+		if (piece == null) {
+			return;
 		}
 		
 		// Determine block type for given piece type

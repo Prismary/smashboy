@@ -66,7 +66,7 @@ public class Piece {
 	}
 	
 	public void hardDrop() {
-		Vector2[] newBlocks = new Vector2[4];;
+		Vector2[] newBlocks = new Vector2[4];
 		
 		// Copy current blocks
 		for (int i = 0; i < 4; i++) {
@@ -137,6 +137,18 @@ public class Piece {
 		
 		// Update
 		Game.instance.window.board.update();
+	}
+	
+	public boolean isOnGround() {
+		Vector2[] newBlocks = new Vector2[4];
+		
+		// Calculate block positions if piece was moved down
+		for (int i = 0; i < 4; i++) {
+			newBlocks[i] = new Vector2(blocks[i].X, blocks[i].Y + 1);
+		}
+		
+		// Return based on collision
+		return checkCollision(newBlocks);
 	}
 	
 	public boolean checkCollision(Vector2[] pieceBlocks) {
